@@ -9,6 +9,7 @@ import { NotFoundComponent } from './pages/error/not-found/not-found.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { AuthGuard } from './guard/auth.guard';
 
 export const routes: Routes = [
     { 
@@ -34,36 +35,42 @@ export const routes: Routes = [
 
     { 
         path: 'dashboard', 
-        component: DashboardComponent 
+        component: DashboardComponent,
+        canActivate: [AuthGuard]
     },
 
     {
         path: 'workspaces', 
         component: WorkspacesComponent,
+        canActivate: [AuthGuard]
     },
 
     {
         path: 'workspace/:id',
-        component: WorkspaceComponent
+        component: WorkspaceComponent,
+        canActivate: [AuthGuard]
     },
 
     {
         path: 'projects', 
-        component: ProjectsComponent 
+        component: ProjectsComponent,
+        canActivate: [AuthGuard]
     },
 
     {
         path: 'project/:id', 
-        component: ProjectComponent 
+        component: ProjectComponent,
+        canActivate: [AuthGuard]
     },
 
     { 
         path: 'about', 
-        component: AboutComponent 
+        component: AboutComponent,
+        canActivate: [AuthGuard]
     },
 
     { 
         path: '**', 
-        component: NotFoundComponent 
+        component: NotFoundComponent
     }
 ];
